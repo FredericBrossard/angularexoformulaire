@@ -1,20 +1,79 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{ titre }} 
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+ <!--checkbox binder sur variable urgent-->
+ <input type="checkbox"  [(ngModel)]="connected"/>
+
+
+   
+<div *ngIf="!connected"> <p>Cochez le bouton pour vous connecter car vous êtes "Non Connecté"....</p></div>
+
+<div *ngIf="connected === true">  
+
+<div class="formulaire" >
+  <div>
+    <!--<input type="text" value="{{user.name}}" (input)="user.name = inputname.value" #inputname/> -->
+    <!--[] est du proprety binding -->
+    <input type="text" [(ngModel)]="user.name"/>
+  </div>
+  <div>
+      <input type="text" value="{{user.title}}" (input)="user.title = inputtitle.value" #inputtitle/>
+    </div>
+    <div>
+        <input type="text" value="{{user.imgurl}}" (input)="user.imgurl = inputimgurl.value" #inputimgurl/>
+      </div>
+         <div>
+           <!--checkbox binder sur variable urgent-->
+            <input type="checkbox"  [(ngModel)]="user.urgent"/>
+          </div>
+
+          <div>
+              <!--checkbox binder sur variable urgent-->
+               <input type="checkbox"  [(ngModel)]="urgentvar"/>
+          </div>
+</div>
+<div>
+  <input type="text" [(ngModel)]="user.textcolor"/>
+</div>
+<div>
+<div class="id-card">
+  <!--<img class="img-card" src="{{user.imgurl}}"/> {{ }}--> <!-- interpolation -->
+  <img class="img-card" [src]="user.imgurl"/> <!-- []-->
+  <!-- syntaxe property binding -->
+  <!--<div class="text-card" style ="color: red";> -->
+    <!--<div class="text-card" [style.color]="user.textcolor"> -->
+     <!-- le fait d'utilser ' ' indique que c'est une string et pas une variable à évaluer-->
+     <div class="text-card" [style.color]="user.urgent ? 'red' : 'blue'"> 
+      
+    
+  <h2> {{ user.name }}</h2>
+  <p>{{ user.title }}</p>
+  <p>{{ user.urgent }}</p>
+  <p *ngIf="urgentvar === true"> URGENT </p>
+  </div>
+</div>
+<br>
+<div class="text-card" [style.color]="urgentvar ? 'red' : 'blue'"> 
+<br>
+<br>
+<button (click)="logInputValue(name.value)">Merci de saisir d'abord et ensuite de click</button>
+<input type="text" (input)="changeName(name.value)" value="{{ user.name }}" #name/>
+<br>
+<br>
+<button (click)="logInputValue(title.value)">Merci de saisir d'abord et ensuite de click</button>
+<input type="text" (input)="changeTitle(title.value)" value="{{ user.title }}" #title/>
+<br>
+<br>
+<button (click)="logInputValue(imgurl.value)">Merci de saisir url image d'abord et ensuite de click</button>
+<input type="text" (input)="changeImgUrl(imgurl.value)" value="{{ user.imgurl }}" #imgurl/>
+
+</div>
+
+
+
+
+
 

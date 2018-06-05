@@ -1,0 +1,23 @@
+.img {
+	width: 100px;
+	height: 100px;
+}
+
+.id-card {
+
+    display:flex;
+    width: 200px;
+    height: 200px;
+
+}
+
+.id-card.img, .text.card {
+padding: 0 em;
+
+}
+
+.formulaire {
+    background-color: silver;
+    border-radius: 14px;
+    text-align: center
+}
